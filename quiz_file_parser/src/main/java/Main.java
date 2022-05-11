@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        QuizFileParser parser = new QuizFileParser("/run/media/ole/WEEE/Schule/p-seminar/QuizFileParser/src/main/java/test.txt");
+        QuizFileParser parser = new QuizFileParser("/home/ole/github/Android-App/quiz_file_parser/src/main/java/test.txt");
 
         List<GenericQuiz> quizList;
 
@@ -48,26 +48,26 @@ public class Main {
             System.out.println("Token vom server: " + token);
 
             // hier Quiz-key einfügen
-            String quizKey = "xx";
+            String quizKey = "quiz_insert_key_test";
 
 
             for (GenericQuiz quiz: quizList){
                 AddGenericQuizRequest addQuizRequest = new AddGenericQuizRequest(token, quizKey, quiz, addQuizResponse -> {
                     if (!addQuizResponse.couldConnect()){
                         System.err.println("Konnte das Quiz mit Frage \"" + quiz.getQuestion() + "\" nicht hinzufügen, da die Verbindung zum Server fehlgeschlagen ist!");
-                        return;
+                        System.exit(1);
                     }
 
                     if (addQuizResponse.getHttpCode() != HttpCodes.OK){
                         System.err.println("Konnte das Quiz mit Frage \"" + quiz.getQuestion() + "\"  nicht hinzufügen, da etwas beim verbinden zum Server schiefgelaufen ist!");
                         System.err.println("HttpCode: " + (addQuizResponse.getHttpCode() == HttpCodes.ERROR ? addQuizResponse.getResponse().code() : addQuizResponse.getHttpCode()));
-                        return;
+                        System.exit(1);
                     }
 
                     if (addQuizResponse.getApiCode() != ApiCodes.SUCCESS){
                         System.err.println("Konnte das Quiz mit Frage \"" + quiz.getQuestion() + "\"  nicht hinzufügen!");
                         System.err.println("Api code: " + (addQuizResponse.getApiCode() == ApiCodes.ERROR ? addQuizResponse.getJson().opt("code") : addQuizResponse.getApiCode()));
-                        return;
+                        System.exit(1);
 
                     } else if (addQuizResponse.getApiCode() == ApiCodes.SUCCESS){
                         System.out.println("Quiz mit Frage: \"" + quiz.getQuestion() + "\" erfolgreich hinzugefügt!");

@@ -49,10 +49,16 @@ public class QuizFileParser {
 
             int count = 0;
 
-            for (int i = wrongAnswerStartIndex; i < wrongAnswerStartIndex + 3; i++){
-                wrongAnswers[count] = options[i];
-                count += 1;
+            try{
+                for (int i = wrongAnswerStartIndex; i < wrongAnswerStartIndex + 3; i++){
+                    wrongAnswers[count] = options[i];
+                    count += 1;
+                }
+            } catch (ArrayIndexOutOfBoundsException e){
+                System.err.println("Array index out of bounds bei frage: " + question);
             }
+
+
 
             quizList.add(new GenericQuiz(0, question, correctAnswer, wrongAnswers));
         }
