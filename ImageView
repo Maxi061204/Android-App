@@ -1,0 +1,17 @@
+//XML
+
+<ImageView
+        android:id="@+id/image1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="ist ein bild jaja"
+        android:src="ls2.png"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+        
+        
+//java code dazu, ls2 ist auf github zu finden
+
+        {ImageView mImageView;
+    mImageView = (ImageView) findViewById(R.id.image1);
+    mImageView.setImageResource(R.drawable.ls2);}
