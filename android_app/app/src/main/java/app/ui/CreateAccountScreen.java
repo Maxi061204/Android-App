@@ -22,6 +22,10 @@ public class CreateAccountScreen {
     public CreateAccountScreen(){
         instance = MainActivity.getInstance();
 
+        instance.runOnUiThread(() -> {
+            instance.setContentView(R.layout.create_account_screen);
+        });
+
         username = instance.findViewById(R.id.create_account_username);
         password = instance.findViewById(R.id.create_account_password);
         passwordConfirmation = instance.findViewById(R.id.create_account_password_confirmation);
@@ -69,10 +73,9 @@ public class CreateAccountScreen {
                 if (response.getApiCode() == ApiCodes.SUCCESS){
                     instance.runOnUiThread(() -> {
                         Toast.makeText(instance, "Das Konto wurde erfolgreich erstellt!", Toast.LENGTH_SHORT).show();
-
-                        instance.setContentView(R.layout.activity_main);
-                        new LoginAccountScreen();
                     });
+
+                    new LoginAccountScreen();
 
                 } else if (response.getApiCode() == ApiCodes.ACCOUNT_ALREADY_EXISTS){
                     Utils.showErrorMessage(instance, "Ein Konto mit dem Benutzernamen existiert bereits!", "");

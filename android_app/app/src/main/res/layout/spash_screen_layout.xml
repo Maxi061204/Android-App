@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context="app.MainActivity"
+    tools:visibility="visible">
+
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="413dp"
+        android:layout_height="733dp"
+        android:contentDescription="ist ein bild jaja"
+        android:src="@drawable/splash_screen"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

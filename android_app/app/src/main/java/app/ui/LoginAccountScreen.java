@@ -25,6 +25,10 @@ public class LoginAccountScreen {
     public LoginAccountScreen(){
         instance = MainActivity.getInstance();
 
+        instance.runOnUiThread(() -> {
+            instance.setContentView(R.layout.login_screen);
+        });
+
         username = instance.findViewById(R.id.login_username);
         password = instance.findViewById(R.id.login_password);
 
@@ -111,14 +115,12 @@ public class LoginAccountScreen {
         // wenn der Benutzer auf den Konto erstellen Text drückt, zeigen wir ihm den Konto-erstell-Screen
         // und lassen die CreateAccountScreen klasse die Logik dahinter übernehmen
         createAccount.setOnClickListener(event -> {
-            instance.setContentView(R.layout.create_account_screen);
             new CreateAccountScreen();
         });
     }
 
     // das hier habe ich erstellt, damit man sehen kann, was nach dem Erfolgreichem Login getan wird.
     private void onSuccessfulLogin(ApiResponse response){
-        instance.runOnUiThread(() -> instance.setContentView(R.layout.tobi_ui));
         new QuizScreen();
     }
 
