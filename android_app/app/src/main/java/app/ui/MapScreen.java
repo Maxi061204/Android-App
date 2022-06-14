@@ -53,8 +53,8 @@ public class MapScreen extends AppCompatActivity {
             MyLocationNewOverlay mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx), map);
             mLocationOverlay.enableMyLocation();
             map.getOverlays().add(mLocationOverlay);
-
-            map.getController().setZoom(18L);
+            mLocationOverlay.enableFollowLocation();
+            map.getController().setZoom(18);
 
 
             GpsMyLocationProvider g = new GpsMyLocationProvider(ctx);

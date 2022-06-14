@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git/Android-App/android_app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Git/Android-App/android_app/app/src/main/res/layout/map_layout.xml" value="0.1" />
+        <entry key="..\:/Git/Android-App/android_app/app/src/main/res/layout/spash_screen_layout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
         <entry key="app/src/main/res/layout/answer_correct.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/answer_wrong.xml" value="0.14814814814814814" />

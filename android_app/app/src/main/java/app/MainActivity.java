@@ -1,6 +1,7 @@
 package app;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +20,15 @@ public class MainActivity extends AppCompatActivity {
         INSTANCE = MainActivity.this;
         stateManager = StateManager.getInstance();
 
-        new MapScreen();
+        new SplashScreen();
     }
 
     public static MainActivity getInstance(){
         return INSTANCE;
+    }
+
+
+    public void sendMessage(View view) {
+        new MapScreen();
     }
 }

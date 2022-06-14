@@ -1,5 +1,6 @@
 package app.ui;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import app.MainActivity;
@@ -18,7 +19,6 @@ public class SplashScreen {
 
         run();
     }
-
     private void run(){
 
     }
