@@ -54,6 +54,9 @@ public class MapScreen extends AppCompatActivity {
             mLocationOverlay.enableMyLocation();
             map.getOverlays().add(mLocationOverlay);
 
+            map.getController().setZoom(18L);
+
+
             GpsMyLocationProvider g = new GpsMyLocationProvider(ctx);
 
             try {
