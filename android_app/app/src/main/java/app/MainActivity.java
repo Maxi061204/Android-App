@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         INSTANCE = MainActivity.this;
         stateManager = StateManager.getInstance();
 
+
         new SplashScreen();
     }
 
