@@ -1,0 +1,3 @@
+--Anleitung App Icons und Android Studio--
+
+Rechtsclick auf "app" (oben links) -> New -> Img Asset -> Path angeben 
