@@ -56,6 +56,7 @@ public class QuizFileParser {
                 }
             } catch (ArrayIndexOutOfBoundsException e){
                 System.err.println("Array index out of bounds bei frage: " + question);
+                continue;
             }
 
 
