@@ -3,8 +3,8 @@ package app.ui;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,9 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -29,7 +32,7 @@ public class MapScreen extends AppCompatActivity {
     private MapView map = null;
 
     private MainActivity instance;
-
+    Button folgen;
     public MapScreen(){
         this.instance = MainActivity.getInstance();
 
@@ -77,12 +80,37 @@ public class MapScreen extends AppCompatActivity {
                     // WRITE_EXTERNAL_STORAGE is required in order to show the map
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
 
+
+            });
+            folgen= this.instance.findViewById(R.id.folgen);
+            folgen.setOnClickListener(event -> {
+                mLocationOverlay.enableFollowLocation();
+                map.getController().setZoom(18L);
             });
 
 
         });
 
+        //your items
+        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+        items.add(new OverlayItem("Title", "Description", new GeoPoint(0.0d,0.0d))); // Lat/Lon decimal degrees
 
+//the overlay
+        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                    @Override
+                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                        //do something
+                        return true;
+                    }
+                    @Override
+                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+                        return false;
+                    }
+                });
+        mOverlay.setFocusItemsOnTap(true);
+
+        map.getOverlays().add(mOverlay);
     }
 
     @Override

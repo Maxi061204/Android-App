@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <org.osmdroid.views.MapView android:id="@+id/map"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-</LinearLayout>
+    android:layout_height="fill_parent"
+    android:id="@+id/linearLayout">
+
+    <Button
+        android:id="@+id/folgen"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:text="folgen"
+        android:visibility="visible"
+        tools:layout_conversion_absoluteHeight="302dp"
+        tools:layout_conversion_absoluteWidth="177dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="@android:color/transparent"
+        tools:layout_conversion_absoluteHeight="0dp"
+        tools:layout_conversion_absoluteWidth="411dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="742dp">
+
+
+    </org.osmdroid.views.MapView>
+
+</RelativeLayout>
+
