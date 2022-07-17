@@ -6,8 +6,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.api.state.StateManager;
-import app.ui.MapScreen;
 import app.ui.SplashScreen;
+import app.ui.MapScreen;
 
 public class MainActivity extends AppCompatActivity {
     private StateManager stateManager;

@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/image1"
-        android:layout_width="413dp"
-        android:layout_height="733dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="ist ein bild jaja"
         android:src="@drawable/splash_screen"
         android:visibility="visible"
