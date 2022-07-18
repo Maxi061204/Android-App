@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -85,7 +86,7 @@ public class MapScreen extends AppCompatActivity {
             folgen= this.instance.findViewById(R.id.folgen);
             folgen.setOnClickListener(event -> {
                 mLocationOverlay.enableFollowLocation();
-                map.getController().setZoom(18L);
+                map.getController().setZoom(map.getZoomLevelDouble());
             });
 
 
@@ -93,14 +94,16 @@ public class MapScreen extends AppCompatActivity {
 
         //your items
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", new GeoPoint(0.0d,0.0d))); // Lat/Lon decimal degrees
+        items.add(new OverlayItem("Titel", "Beschreibung", new GeoPoint(49.01809d,12.07463d))); // Lat/Lon decimal degrees
 
-//the overlay
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+        Context context = this.instance.getApplicationContext();
+
+        //the overlay
+        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(this.instance.getApplicationContext(), items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                        //do something
+                        Toast.makeText(context, "Button tap", Toast.LENGTH_SHORT).show();
                         return true;
                     }
                     @Override
