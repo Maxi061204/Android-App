@@ -97,6 +97,7 @@ public class MapScreen extends AppCompatActivity {
 
         //your items
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+        //aTitel = Text oben; aSnippet = Text unten; Geo point = Position in Koordinaten (Zuerst Breite dann Länge)
         items.add(new OverlayItem("Titel", "Beschreibung", new GeoPoint(49.01809d,12.07463d))); // Lat/Lon decimal degrees
 
         Context context = this.instance.getApplicationContext();
@@ -105,13 +106,17 @@ public class MapScreen extends AppCompatActivity {
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(this.instance.getApplicationContext(), items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
+                    //Bei kurzem drücken
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
                         Toast.makeText(context, "Button tap", Toast.LENGTH_SHORT).show();
+
                         return true;
                     }
                     @Override
+                    //Bei langem Drücken
                     public boolean onItemLongPress(final int index, final OverlayItem item) {
-                        return false;
+                        //new QuizScreen();  Bessere Lösung einfügen. Noch nicht getestet.
+                        return true;
                     }
                 });
         mOverlay.setFocusItemsOnTap(true);
