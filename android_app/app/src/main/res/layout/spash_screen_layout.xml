@@ -8,7 +8,7 @@
     tools:context="app.MainActivity"
     tools:visibility="visible">
 
-
+//Bild mit den drei händen und dem Logo
     <ImageView
         android:id="@+id/image1"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="1dp" />
-
+//Button der lilanen Fraktion
     <Button
         android:id="@+id/button_send5"
         android:layout_width="177dp"
@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
+//Button der Roten Fraktion
     <Button
         android:id="@+id/button_send4"
         android:layout_width="190dp"
@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
+//Button der blauen Fraktion
     <Button
         android:id="@+id/button_send"
         android:layout_width="299dp"

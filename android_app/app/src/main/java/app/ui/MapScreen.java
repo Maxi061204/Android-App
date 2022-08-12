@@ -76,6 +76,7 @@ public class MapScreen extends AppCompatActivity {
 
             requestPermissionsIfNecessary(new String[] {
                     // if you need to show the current location, uncomment the line below
+                    //Berechtigungen für ungefähren und genauen Standort (Beide Notwendig)
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION,
                     // WRITE_EXTERNAL_STORAGE is required in order to show the map
@@ -83,8 +84,10 @@ public class MapScreen extends AppCompatActivity {
 
 
             });
+            //Wenn auf den folgen button gecklickt wird, wird dem aktuellen standort erneut gefolgt
             folgen= this.instance.findViewById(R.id.folgen);
             folgen.setOnClickListener(event -> {
+                //mehtode um dem aktuellen standort zu folgen
                 mLocationOverlay.enableFollowLocation();
                 map.getController().setZoom(map.getZoomLevelDouble());
             });

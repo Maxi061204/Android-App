@@ -18,15 +18,26 @@ public class SplashScreen {
         instance.runOnUiThread(() -> {
             this.instance.setContentView(R.layout.spash_screen_layout);
 
+            //Den buttons wird eine id zugewiesen
             blau = this.instance.findViewById(R.id.button_send);
             rot = this.instance.findViewById(R.id.button_send4);
             lila = this.instance.findViewById(R.id.button_send5);
 
 
             blau.setOnClickListener(event -> {
+                //Wenn auf den Button gecklickt wird passiert folgendes
                 new MapScreen();
             });
 
+            lila.setOnClickListener(event -> {
+                //Wenn auf den Button gecklickt wird passiert folgendes
+                new MapScreen();
+            });
+
+            rot.setOnClickListener(event -> {
+                //Wenn auf den Button gecklickt wird passiert folgendes
+                new MapScreen();
+            });
 
         });
 
