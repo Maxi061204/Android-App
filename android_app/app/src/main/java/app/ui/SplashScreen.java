@@ -11,6 +11,7 @@ import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 public class SplashScreen {
     Button blau, rot, lila ;
     private MainActivity instance;
+    private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
 
     public SplashScreen(){
         instance = MainActivity.getInstance();
@@ -22,6 +23,12 @@ public class SplashScreen {
             blau = this.instance.findViewById(R.id.button_send);
             rot = this.instance.findViewById(R.id.button_send4);
             lila = this.instance.findViewById(R.id.button_send5);
+
+
+
+
+
+
 
 
             blau.setOnClickListener(event -> {
