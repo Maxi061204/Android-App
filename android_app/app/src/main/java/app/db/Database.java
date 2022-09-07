@@ -1,4 +1,4 @@
-package app.ui.utils.db;
+package app.db;
 
 
 public class Database {
