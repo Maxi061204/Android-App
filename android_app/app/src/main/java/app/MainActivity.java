@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.api.state.StateManager;
+import app.ui.LoginAccountScreen;
 import app.ui.SplashScreen;
 import app.ui.MapScreen;
 
@@ -20,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         INSTANCE = MainActivity.this;
         stateManager = StateManager.getInstance();
 
-
-        new SplashScreen();
+        new LoginAccountScreen();
     }
 
     public static MainActivity getInstance(){
