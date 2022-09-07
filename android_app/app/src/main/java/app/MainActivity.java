@@ -22,10 +22,6 @@ public class MainActivity extends AppCompatActivity {
         INSTANCE = MainActivity.this;
         stateManager = StateManager.getInstance();
 
-        Utils.saveData(this, "test.txt", "test");
-
-        System.out.println(Utils.getDataString(this, "test.txt"));
-
         new LoginAccountScreen();
     }
 
