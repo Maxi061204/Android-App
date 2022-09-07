@@ -110,7 +110,6 @@ public class MapScreen extends AppCompatActivity {
                     @Override
                     //Bei kurzem drücken
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-
                         new QuizScreen();
                         return true;
                     }
@@ -118,7 +117,6 @@ public class MapScreen extends AppCompatActivity {
                     //Bei langem Drücken
                     public boolean onItemLongPress(final int index, final OverlayItem item) {
                         new QuizScreen();
-
                         return true;
                     }
                 });

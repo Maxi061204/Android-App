@@ -9,6 +9,7 @@ import app.api.state.StateManager;
 import app.ui.LoginAccountScreen;
 import app.ui.SplashScreen;
 import app.ui.MapScreen;
+import app.ui.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     private StateManager stateManager;
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         INSTANCE = MainActivity.this;
         stateManager = StateManager.getInstance();
+
+        Utils.saveData(this, "test.txt", "test");
+
+        System.out.println(Utils.getDataString(this, "test.txt"));
 
         new LoginAccountScreen();
     }

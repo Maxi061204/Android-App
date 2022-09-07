@@ -121,7 +121,7 @@ public class LoginAccountScreen {
 
     // das hier habe ich erstellt, damit man sehen kann, was nach dem Erfolgreichem Login getan wird.
     private void onSuccessfulLogin(ApiResponse response){
-        new QuizScreen();
+        new SplashScreen();
     }
 
 }
