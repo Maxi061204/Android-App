@@ -111,7 +111,7 @@ public class MapScreen extends AppCompatActivity {
                     //Bei kurzem drücken
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
 
-
+                        new QuizScreen();
                         return true;
                     }
                     @Override
