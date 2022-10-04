@@ -1,0 +1,11 @@
+//Polygone Test von Tobi
+
+List<GeoPoint> geoPoints = new ArrayList<>();
+//Punkte werden hinzugefügt
+Polygon polygon = new Polygon();
+geoPoints.add(geoPoints.get(0));    //zwingt den letzten punkt mit dem ersten sich zu verbinden
+polygon.getFillPaint().setColor(Color.parseColor("#30b642")); //füllfarbe
+polygon.setPoints(geoPoints);
+polygon.setTitle("Dom");
+
+map.getOverlayManager().add(polygon);
