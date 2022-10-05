@@ -19,7 +19,7 @@ public class QuizScreen {
     public QuizScreen(){
         instance = MainActivity.getInstance();
 
-        instance.runOnUiThread(() -> instance.setContentView(R.layout.tobi_ui));
+        instance.runOnUiThread(() -> instance.setContentView(R.layout.quiz_screen));
 
         run();
     }
