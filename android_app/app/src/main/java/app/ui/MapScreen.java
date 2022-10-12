@@ -18,6 +18,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
@@ -492,7 +493,7 @@ public class MapScreen extends AppCompatActivity {
         mOverlay.setFocusItemsOnTap(true);
 
         //punkt an der Dreifaltigkeitskirche
-        items.add(new OverlayItem("Dreifalrigkeitskirche", "", new GeoPoint(49.030638899241794d, 12.096726984656957d))); // Lat/Lon decimal degrees
+        items.add(new OverlayItem("Dreifaltigkeitskirche", "", new GeoPoint(49.030638899241794d, 12.096726984656957d))); // Lat/Lon decimal degrees
 
         context = this.instance.getApplicationContext();
 
@@ -516,6 +517,15 @@ public class MapScreen extends AppCompatActivity {
                     }
                 });
         mOverlay.setFocusItemsOnTap(true);
+
+        Marker startmarker = new Marker(map);
+        startmarker.setPosition(new GeoPoint(49.030638899241794d, 12.096726984656957d));
+        startmarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+
+        startmarker.setTitle("rofl");
+        // startmarker.setIcon(this.instance.getDrawable(R.drawable.ic_baseline_error_24));
+        startmarker.setImage(this.instance.getDrawable(R.drawable.ic_baseline_error_24));
+        map.getOverlays().add(startmarker);
 
         map.getOverlays().add(mOverlay);
     }

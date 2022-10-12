@@ -2,6 +2,7 @@ package app.ui;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import app.MainActivity;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
@@ -14,7 +15,7 @@ public class QuizScreen {
 
     private TextView frage;
 
-    private Button eins, zwei, drei, vier;
+    private Button eins, zwei, drei, vier, back;
 
     public QuizScreen(){
         instance = MainActivity.getInstance();
@@ -39,7 +40,7 @@ public class QuizScreen {
                 zwei = instance.findViewById(R.id.tobi_button_zwei);
                 drei = instance.findViewById(R.id.tobi_button_drei);
                 vier = instance.findViewById(R.id.tobi_button_vier);
-                back = inctance.findViewById(R.id.back);
+                back = instance.findViewById(R.id.back);
 
                 frage.setText(quiz.getQuestion());
 
@@ -71,35 +72,42 @@ public class QuizScreen {
                     vier.setText(quiz.getWrongAnswers()[0]);
                 }
 
+                back.setOnClickListener(event -> {
+                   new MapScreen();
+                });
 
-            });
+                        //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
+                eins.setOnClickListener(event -> {
+                            answercheck(3, randomnumber);
+                        });
+                zwei.setOnClickListener(event -> {
+                            answercheck(2, randomnumber);
+                        });
+                drei.setOnClickListener(event -> {
+                            answercheck(1, randomnumber);
+                        });
+                vier.setOnClickListener(event -> {
+                            answercheck(0, randomnumber);
+                        });
+
+                });
 
         });
     }
 
-        }
+    private void answercheck(int n, int randomnumber) {
+        this.instance.runOnUiThread(() -> {
+            TextView frage = this.instance.findViewById(R.id.tobi_frage);
 
-//backbutton
-    back.setOnClickListener(event -> {
-          setContentView(R.layout.map_screen);}
-    
-    //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
-            eins.setOnClickListener(event -> {
-                 answercheck(3);
+            if (randomnumber == n) {
+                frage.setText(R.string.BelohnungQuizklein);
             }
-            eins.setOnClickListener(event -> {
-                 answercheck(2);
+            else{
+                frage.setText(R.string.FalschQuizklein);
+                Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show();
+                new QuizScreen();
             }
-            eins.setOnClickListener(event -> {
-                 answercheck(1);
-            }  
-            eins.setOnClickListener(event -> {
-                 answercheck(0);
-            } 
-//es wird überprüft, ob die mitgelieferte Zahl der Zufallszahl entspricht.                                    
-    private void answercheck(char n) {
-        if (randomnumber == n){
-            setContentView(R.layout.answer_correct);}
-        else{
-            setContentView(R.layout.answer_wrong);}                                    
- }
+        });
+    }
+
+}

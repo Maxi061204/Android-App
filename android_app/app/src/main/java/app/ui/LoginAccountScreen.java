@@ -57,7 +57,7 @@ public class LoginAccountScreen {
 
                 // wenn der HTTP-Code nicht HTTPCodes.OK ist, dann war die Verbindung fehlerhaft.
                 if (response.getHttpCode() != HttpCodes.OK){
-                    Utils.showErrorMessage(instance, "Ein unerwarteter Netzwerkfehler ist aufgetreten!", "Netzwerk code: " + response.getHttpCode().getCode() + "\n" + "Body: " + response.getJson().toString());
+                    Utils.showErrorMessage(instance, "Ein unerwarteter Netzwerkfehler ist aufgetreten!", "Netzwerk code: " + response.getHttpCode().getCode() + "\n" + "Body: " + (response.getJson() != null ? response.getJson().toString() : "Json is null"));
                     return;
                 }
 
