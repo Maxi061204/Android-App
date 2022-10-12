@@ -76,4 +76,28 @@ public class QuizScreen {
         });
     }
 
-}
+        }
+    
+    
+    eins= this.instance.findViewById(R.id.tobi_button_eins);
+            eins.setOnClickListener(event -> {
+                 answercheck(char 3);
+            }
+    zwei= this.instance.findViewById(R.id.tobi_button_zwei);
+            eins.setOnClickListener(event -> {
+                 answercheck(char 2);
+            }
+    drei= this.instance.findViewById(R.id.tobi_button_drei);
+            eins.setOnClickListener(event -> {
+                 answercheck(char 1);
+            }  
+    vier= this.instance.findViewById(R.id.tobi_button_vier);
+            eins.setOnClickListener(event -> {
+                 answercheck(char 0);
+            }  
+    private void answercheck(char n) {
+        if (randomnumber == n){
+            setContentView(R.layout.answer_correct);}
+        else{
+            setContentView(R.layout.answer_wrong);}                                    
+ }
