@@ -21,5 +21,6 @@ public class QuizScreen {
 
         run();
         back = instance.findViewById(R.id.back);
-        back.
+        back.setOnClickListener(event -> {
+          setContentView(R.layout.map_screen);}
 }
