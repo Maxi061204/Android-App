@@ -7,7 +7,7 @@
     tools:context="app.MainActivity">
     
     <TextView
-        android:id="@+id/tobi_frage"
+        android:id="@+id/answercorrect"
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:text="@string/BelohnungQuizklein"
