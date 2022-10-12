@@ -78,7 +78,7 @@ public class QuizScreen {
 
         }
     
-    
+    //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
     eins= this.instance.findViewById(R.id.tobi_button_eins);
             eins.setOnClickListener(event -> {
                  answercheck(char 3);
@@ -94,7 +94,8 @@ public class QuizScreen {
     vier= this.instance.findViewById(R.id.tobi_button_vier);
             eins.setOnClickListener(event -> {
                  answercheck(char 0);
-            }  
+            } 
+//es wird überprüft, ob die mitgelieferte Zahl der Zufallszahl entspricht.                                    
     private void answercheck(char n) {
         if (randomnumber == n){
             setContentView(R.layout.answer_correct);}
