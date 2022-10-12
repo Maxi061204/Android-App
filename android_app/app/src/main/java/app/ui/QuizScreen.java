@@ -80,7 +80,7 @@ public class QuizScreen {
         }
 
 //backbutton
-    eins.setOnClickListener(event -> {
+    back.setOnClickListener(event -> {
           setContentView(R.layout.map_screen);}
     
     //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
