@@ -39,6 +39,7 @@ public class QuizScreen {
                 zwei = instance.findViewById(R.id.tobi_button_zwei);
                 drei = instance.findViewById(R.id.tobi_button_drei);
                 vier = instance.findViewById(R.id.tobi_button_vier);
+                back = inctance.findViewById(R.id.back);
 
                 frage.setText(quiz.getQuestion());
 
@@ -77,23 +78,23 @@ public class QuizScreen {
     }
 
         }
+
+//backbutton
+    eins.setOnClickListener(event -> {
+          setContentView(R.layout.map_screen);}
     
     //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
-    eins= this.instance.findViewById(R.id.tobi_button_eins);
             eins.setOnClickListener(event -> {
-                 answercheck(char 3);
+                 answercheck(3);
             }
-    zwei= this.instance.findViewById(R.id.tobi_button_zwei);
             eins.setOnClickListener(event -> {
-                 answercheck(char 2);
+                 answercheck(2);
             }
-    drei= this.instance.findViewById(R.id.tobi_button_drei);
             eins.setOnClickListener(event -> {
-                 answercheck(char 1);
+                 answercheck(1);
             }  
-    vier= this.instance.findViewById(R.id.tobi_button_vier);
             eins.setOnClickListener(event -> {
-                 answercheck(char 0);
+                 answercheck(0);
             } 
 //es wird überprüft, ob die mitgelieferte Zahl der Zufallszahl entspricht.                                    
     private void answercheck(char n) {
