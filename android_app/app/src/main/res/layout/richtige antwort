@@ -13,10 +13,12 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/BelohnungQuizklein"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/tobi_button_eins"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>
