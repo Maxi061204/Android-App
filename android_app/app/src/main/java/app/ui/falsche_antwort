@@ -1,0 +1,26 @@
+package app.ui;
+
+import android.widget.Button;
+import android.widget.TextView;
+
+import app.MainActivity;
+import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
+import app.ui.utils.Utils;
+
+public class QuizScreen {
+    private MainActivity instance;
+
+    private TextView answerfalse;
+
+    private Button back;
+
+    public QuizScreen(){
+        instance = MainActivity.getInstance();
+
+        instance.runOnUiThread(() -> instance.setContentView(R.layout.falsche_antwort));
+
+        run();
+        back = instance.findViewById(R.id.back);
+        back.setOnClickListener(event -> {
+          setContentView(R.layout.map_screen);}
+}
