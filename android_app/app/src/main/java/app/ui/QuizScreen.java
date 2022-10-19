@@ -11,13 +11,14 @@ import app.ui.utils.Utils;
 import java.util.Random;
 
 public class QuizScreen {
+
     private MainActivity instance;
 
     private TextView frage;
 
     private Button eins, zwei, drei, vier, back;
 
-    public QuizScreen(){
+    public QuizScreen() {
         instance = MainActivity.getInstance();
 
         instance.runOnUiThread(() -> instance.setContentView(R.layout.quiz_screen));
@@ -25,10 +26,10 @@ public class QuizScreen {
         run();
     }
 
-    private void run(){
+    private void run() {
         // Hier ist die Api-Anfrage in der GenericQuiz Klasse verpackt. Hier muss nur noch geprüft werden ob die Anfrage erfolgreich war.
         GenericQuiz.getRandomQuiz(quiz -> {
-            if (quiz == null){
+            if (quiz == null) {
                 Utils.showErrorMessage(instance, "Ein Fehler ist aufgetreten, als ein Quiz vom Server abgefraget werden sollte!", "");
                 return;
             }
@@ -46,24 +47,21 @@ public class QuizScreen {
 
                 Random number = new Random();
                 int randomnumber = number.nextInt(4);//je nach Zahl werden die Texte anders zugeordnet
-                if(randomnumber == 0){
+                if (randomnumber == 0) {
                     eins.setText(quiz.getWrongAnswers()[0]);
                     zwei.setText(quiz.getWrongAnswers()[1]);
                     drei.setText(quiz.getWrongAnswers()[2]);
-                    vier.setText(quiz.getCorrectAnswer());}
-
-                else{
-                    if(randomnumber == 1) {
+                    vier.setText(quiz.getCorrectAnswer());
+                } else {
+                    if (randomnumber == 1) {
                         eins.setText(quiz.getWrongAnswers()[1]);
                         zwei.setText(quiz.getWrongAnswers()[2]);
                         drei.setText(quiz.getCorrectAnswer());
-                    }
-                    else{
-                        if(randomnumber == 2){
+                    } else {
+                        if (randomnumber == 2) {
                             eins.setText(quiz.getWrongAnswers()[2]);
                             zwei.setText(quiz.getCorrectAnswer());
-                        }
-                        else{
+                        } else {
                             eins.setText(quiz.getCorrectAnswer());
                             zwei.setText(quiz.getWrongAnswers()[2]);
                         }
@@ -73,24 +71,24 @@ public class QuizScreen {
                 }
 
                 back.setOnClickListener(event -> {
-                   new MapScreen();
+                    new MapScreen();
                 });
 
-                        //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
+                //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
                 eins.setOnClickListener(event -> {
-                            answercheck(3, randomnumber);
-                        });
-                zwei.setOnClickListener(event -> {
-                            answercheck(2, randomnumber);
-                        });
-                drei.setOnClickListener(event -> {
-                            answercheck(1, randomnumber);
-                        });
-                vier.setOnClickListener(event -> {
-                            answercheck(0, randomnumber);
-                        });
-
+                    answercheck(3, randomnumber);
                 });
+                zwei.setOnClickListener(event -> {
+                    answercheck(2, randomnumber);
+                });
+                drei.setOnClickListener(event -> {
+                    answercheck(1, randomnumber);
+                });
+                vier.setOnClickListener(event -> {
+                    answercheck(0, randomnumber);
+                });
+
+            });
 
         });
     }
@@ -101,8 +99,7 @@ public class QuizScreen {
 
             if (randomnumber == n) {
                 frage.setText(R.string.BelohnungQuizklein);
-            }
-            else{
+            } else {
                 frage.setText(R.string.FalschQuizklein);
                 Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show();
                 new QuizScreen();
