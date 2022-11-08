@@ -3,6 +3,7 @@ package app.ui;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.Toast;
@@ -104,6 +105,22 @@ public class MapScreen extends AppCompatActivity {
         items.add(new OverlayItem("Goethe Gymnasium", "Goethestrasse 1", new GeoPoint(49.01809d,12.07463d))); // Lat/Lon decimal degrees
 
         Context context = this.instance.getApplicationContext();
+
+
+        Location emptyLocation = new Location("");
+        emptyLocation.setLatitude(49.01809d);
+        emptyLocation.setLongitude(12.07463d);
+
+        float radius = 50.0f;
+        float distance = MainActivity.getLocation().distanceTo(emptyLocation);
+
+        if (distance < radius){
+            Toast.makeText(instance.getApplicationContext(), "Du bist drin!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(instance.getApplicationContext(), "Du bist nicht drin!", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(this.instance.getApplicationContext(), items,
