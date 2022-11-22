@@ -22,11 +22,11 @@ public class RightQuizAnswerScreen {
         instance.runOnUiThread(() -> instance.setContentView(R.layout.false_quiz_answer_screen));
 
         instance.runOnUiThread(() -> {
-            richtig = instance.findViewById(R.id.richtig);
+            richtigeAntwort = instance.findViewById(R.id.richtige_antwort);
             back = instance.findViewById(R.id.back);
             next = instance.findViewById(R.id.next);
 
-            richtig.setText("Richtig!");
+            richtigeAntwort.setText("Richtig!");
         });
         back.setOnClickListener(event -> {
             new MapScreen();
