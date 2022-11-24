@@ -7,7 +7,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/linearLayout">
-//Button zum folgen des aktuellen Standorts
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+
+    //anzeigen der Map an sich
+
     <Button
         android:id="@+id/folgen"
         android:layout_width="wrap_content"
@@ -18,7 +29,7 @@
         tools:layout_conversion_absoluteWidth="177dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="440dp" />
-//anzeigen der Map an sich
+
     <org.osmdroid.views.MapView
         android:id="@+id/map"
         android:layout_width="wrap_content"
@@ -27,18 +38,17 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-3dp"
-        android:layout_marginTop="-1dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="233dp"
+        android:layout_marginEnd="-14dp"
+        android:layout_marginBottom="-232dp"
         android:background="@android:color/transparent"
         tools:layout_conversion_absoluteHeight="0dp"
         tools:layout_conversion_absoluteWidth="411dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="742dp">
+        tools:layout_editor_absoluteY="742dp"/>
 
 
-    </org.osmdroid.views.MapView>
 
 </RelativeLayout>
 
