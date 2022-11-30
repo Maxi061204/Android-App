@@ -1,2 +1,4 @@
 quiz_file_parser/*
 android_app/.gradle/
+android_app/local.properties
+android_app/.idea/gradle.xml
