@@ -1,5 +1,8 @@
 package app;
 
+import static app.ui.MapScreen.requestPermissionsIfNecessary;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.location.Location;
 import android.location.LocationListener;
@@ -29,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         INSTANCE = MainActivity.this;
         stateManager = StateManager.getInstance();
+
+        requestPermissionsIfNecessary(new String[] {
+                // if you need to show the current location, uncomment the line below
+                //Berechtigungen für ungefähren und genauen Standort (Beide Notwendig)
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                // WRITE_EXTERNAL_STORAGE is required in order to show the map
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+
+        }, this);
 
         final LocationListener mLocationListener = loc -> {
             location = loc;

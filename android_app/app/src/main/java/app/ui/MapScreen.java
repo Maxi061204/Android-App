@@ -32,7 +32,7 @@ import app.ui.utils.Punkt;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 
 public class MapScreen extends AppCompatActivity {
-    private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
+    private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
 
     private MainActivity instance;
@@ -45,16 +45,6 @@ public class MapScreen extends AppCompatActivity {
         //load/initialize the osmdroid configuration, this can be done
 
         this.instance.runOnUiThread(() -> {
-            requestPermissionsIfNecessary(new String[] {
-                    // if you need to show the current location, uncomment the line below
-                    //Berechtigungen für ungefähren und genauen Standort (Beide Notwendig)
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    // WRITE_EXTERNAL_STORAGE is required in order to show the map
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-
-
-            });
             Context ctx = this.instance.getApplicationContext();
             Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
             //setting this before the layout is inflated is a good idea
@@ -206,10 +196,10 @@ public class MapScreen extends AppCompatActivity {
         }
     }
 
-    private void requestPermissionsIfNecessary(String[] permissions) {
+    public static void requestPermissionsIfNecessary(String[] permissions, MainActivity instance) {
         ArrayList<String> permissionsToRequest = new ArrayList<>();
         for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(this.instance, permission)
+            if (ContextCompat.checkSelfPermission(instance, permission)
                     != PackageManager.PERMISSION_GRANTED) {
                 // Permission is not granted
                 permissionsToRequest.add(permission);
@@ -217,7 +207,7 @@ public class MapScreen extends AppCompatActivity {
         }
         if (permissionsToRequest.size() > 0) {
             ActivityCompat.requestPermissions(
-                    this.instance,
+                    instance,
                     permissionsToRequest.toArray(new String[0]),
                     REQUEST_PERMISSIONS_REQUEST_CODE);
 

@@ -91,36 +91,38 @@ public class QuizScreen {
 
             });
 
+            double startzeit = (System.currentTimeMillis());
+            double damitdasProgrammzufriedenist = 0;
+            while (true) {
+                double vergangenezeit = System.currentTimeMillis() - startzeit;
+                if (vergangenezeit < 1000) {
+                    zeit.setText("10");
+                } else if (vergangenezeit < 2000) {
+                    zeit.setText("9");
+                } else if (vergangenezeit < 3000) {
+                    zeit.setText("8");
+                } else if (vergangenezeit < 4000) {
+                    zeit.setText("7");
+                } else if (vergangenezeit < 5000) {
+                    zeit.setText("6");
+                } else if (vergangenezeit < 6000) {
+                    zeit.setText("5");
+                } else if (vergangenezeit < 7000) {
+                    zeit.setText("4");
+                } else if (vergangenezeit < 8000) {
+                    zeit.setText("3");
+                } else if (vergangenezeit < 9000) {
+                    zeit.setText("2");
+                } else if (vergangenezeit < 10000) {
+                    zeit.setText("1");
+                } else {
+                    new FalseQuizAnswerScreen();
+                }
+            }
+
         });
         //Timer
-        double startzeit = (System.currentTimeMillis());
-        double damitdasProgrammzufriedenist = 0;
-        while (true) {
-            double vergangenezeit = System.currentTimeMillis() - startzeit;
-            if (vergangenezeit < 1000) {
-                zeit.setText("10");
-            } else if (vergangenezeit < 2000) {
-                zeit.setText("9");
-            } else if (vergangenezeit < 3000) {
-                zeit.setText("8");
-            } else if (vergangenezeit < 4000) {
-                zeit.setText("7");
-            } else if (vergangenezeit < 5000) {
-                zeit.setText("6");
-            } else if (vergangenezeit < 6000) {
-                zeit.setText("5");
-            } else if (vergangenezeit < 7000) {
-                zeit.setText("4");
-            } else if (vergangenezeit < 8000) {
-                zeit.setText("3");
-            } else if (vergangenezeit < 9000) {
-                zeit.setText("2");
-            } else if (vergangenezeit < 10000) {
-                zeit.setText("1");
-            } else {
-                new FalseQuizAnswerScreen();
-            }
-        }
+
     }
 
     private void answercheck ( int n,int randomnumber){
