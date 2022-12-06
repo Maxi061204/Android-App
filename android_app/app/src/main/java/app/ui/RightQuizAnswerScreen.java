@@ -5,12 +5,11 @@ import android.widget.TextView;
 
 import app.MainActivity;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
-import app.ui.utils.Utils;
 
 public class RightQuizAnswerScreen {
     private MainActivity instance;
 
-    private TextView richtigeAntwort;
+    private TextView richtig;
     private Button back, next;
 
     public RightQuizAnswerScreen() {
@@ -22,11 +21,11 @@ public class RightQuizAnswerScreen {
         instance.runOnUiThread(() -> instance.setContentView(R.layout.false_quiz_answer_screen));
 
         instance.runOnUiThread(() -> {
-            richtigeAntwort = instance.findViewById(R.id.richtige_antwort);
+            richtig = instance.findViewById(R.id.richtig);
             back = instance.findViewById(R.id.back);
             next = instance.findViewById(R.id.next);
 
-            richtigeAntwort.setText("Richtig!");
+            richtig.setText("Richtig!");
         });
         back.setOnClickListener(event -> {
             new MapScreen();
