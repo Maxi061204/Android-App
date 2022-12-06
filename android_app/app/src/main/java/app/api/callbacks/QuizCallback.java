@@ -1,4 +1,4 @@
-package app.api.generics;
+package app.api.callbacks;
 
 import app.api.quiz.GenericQuiz;
 

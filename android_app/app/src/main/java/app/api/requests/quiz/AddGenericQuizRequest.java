@@ -1,7 +1,7 @@
 package app.api.requests.quiz;
 
 import app.api.generics.ApiRequest;
-import app.api.generics.RequestCallback;
+import app.api.callbacks.RequestCallback;
 import app.api.generics.RequestType;
 import app.api.quiz.GenericQuiz;
 

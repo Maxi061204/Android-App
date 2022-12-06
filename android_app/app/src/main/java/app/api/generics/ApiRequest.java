@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadFactory;
 
 import java.io.IOException;
 
+import app.api.callbacks.RequestCallback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

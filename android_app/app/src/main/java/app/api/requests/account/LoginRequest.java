@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import app.api.generics.ApiRequest;
-import app.api.generics.RequestCallback;
+import app.api.callbacks.RequestCallback;
 import app.api.generics.RequestType;
 
 public class LoginRequest extends ApiRequest {

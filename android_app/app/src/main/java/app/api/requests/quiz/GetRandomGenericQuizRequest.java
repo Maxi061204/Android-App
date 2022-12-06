@@ -3,7 +3,7 @@ package app.api.requests.quiz;
 import java.util.HashMap;
 
 import app.api.generics.ApiRequest;
-import app.api.generics.RequestCallback;
+import app.api.callbacks.RequestCallback;
 import app.api.generics.RequestType;
 
 public class GetRandomGenericQuizRequest extends ApiRequest {

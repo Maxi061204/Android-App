@@ -3,7 +3,7 @@ package app.api.quiz;
 import app.api.codes.ApiCodes;
 import app.api.codes.HttpCodes;
 import app.api.generics.ApiRequest;
-import app.api.generics.QuizCallback;
+import app.api.callbacks.QuizCallback;
 import app.api.requests.quiz.GetRandomGenericQuizRequest;
 import app.api.state.StateManager;
 import org.json.JSONArray;

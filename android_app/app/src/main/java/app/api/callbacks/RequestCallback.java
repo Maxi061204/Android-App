@@ -1,4 +1,6 @@
-package app.api.generics;
+package app.api.callbacks;
+
+import app.api.generics.ApiResponse;
 
 public interface RequestCallback {
 
