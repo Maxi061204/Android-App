@@ -2,7 +2,6 @@ package app.ui;
 
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import app.MainActivity;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
@@ -26,6 +25,7 @@ public class QuizScreen {
         run();
     }
 
+
     private void run() {
         // Hier ist die Api-Anfrage in der GenericQuiz Klasse verpackt. Hier muss nur noch geprüft werden ob die Anfrage erfolgreich war.
         GenericQuiz.getRandomQuiz(quiz -> {
@@ -36,7 +36,7 @@ public class QuizScreen {
 
             instance.runOnUiThread(() -> {
                 frage = instance.findViewById(R.id.tobi_frage);
-                zeit = instance.findViewById(R.id.tobi_frage);
+                zeit = instance.findViewById(R.id.tobi_zeit);
 
                 eins = instance.findViewById(R.id.tobi_button_eins);
                 zwei = instance.findViewById(R.id.tobi_button_zwei);
@@ -77,65 +77,98 @@ public class QuizScreen {
 
                 //jeder button gibt die Zahl mit, die der Zufallszahl entspricht, bei der dieser die richtige Antwort zugeordmet bekommen hat
                 eins.setOnClickListener(event -> {
-                    answercheck(3, randomnumber);
+                    double damitdasProgrammzufriedenist = 2;
+                    if (randomnumber == 3) {
+                        new FalseQuizAnswerScreen();
+                    } else {
+                        //Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show(); (alte Lösung)
+                        new RightQuizAnswerScreen();
+                    }
                 });
                 zwei.setOnClickListener(event -> {
-                    answercheck(2, randomnumber);
+                    if (randomnumber == 2) {
+                        double damitdasProgrammzufriedenist = 2;
+                        new FalseQuizAnswerScreen();
+                    } else {
+                        //Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show(); (alte Lösung)
+                        new RightQuizAnswerScreen();
+                    }
                 });
                 drei.setOnClickListener(event -> {
-                    answercheck(1, randomnumber);
+                    if (randomnumber == 1) {
+                        double damitdasProgrammzufriedenist = 2;
+                        new FalseQuizAnswerScreen();
+                    } else {
+                        //Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show(); (alte Lösung)
+                        new RightQuizAnswerScreen();
+                    }
                 });
                 vier.setOnClickListener(event -> {
-                    answercheck(0, randomnumber);
+                    if (randomnumber == 0) {
+                        double damitdasProgrammzufriedenist = 2;
+                        new FalseQuizAnswerScreen();
+                    } else {
+                        //Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show(); (alte Lösung)
+                        new RightQuizAnswerScreen();
+                    }
                 });
 
             });
 
-            double startzeit = (System.currentTimeMillis());
-            double damitdasProgrammzufriedenist = 0;
-            while (true) {
-                double vergangenezeit = System.currentTimeMillis() - startzeit;
-                if (vergangenezeit < 1000) {
-                    zeit.setText("10");
-                } else if (vergangenezeit < 2000) {
+        });
+
+
+        //Timer
+        double startzeit = (System.currentTimeMillis());
+         double damitdasProgrammzufriedenist = 0;
+        while (1 > damitdasProgrammzufriedenist) {
+            double vergangenezeit = System.currentTimeMillis() - startzeit;
+            if (vergangenezeit < 1000) {
+                zeit.setText("10");
+            } else {
+                if (vergangenezeit < 2000) {
                     zeit.setText("9");
-                } else if (vergangenezeit < 3000) {
-                    zeit.setText("8");
-                } else if (vergangenezeit < 4000) {
-                    zeit.setText("7");
-                } else if (vergangenezeit < 5000) {
-                    zeit.setText("6");
-                } else if (vergangenezeit < 6000) {
-                    zeit.setText("5");
-                } else if (vergangenezeit < 7000) {
-                    zeit.setText("4");
-                } else if (vergangenezeit < 8000) {
-                    zeit.setText("3");
-                } else if (vergangenezeit < 9000) {
-                    zeit.setText("2");
-                } else if (vergangenezeit < 10000) {
-                    zeit.setText("1");
                 } else {
-                    new FalseQuizAnswerScreen();
+                    if (vergangenezeit < 3000) {
+                        zeit.setText("8");
+                    } else {
+                        if (vergangenezeit < 4000) {
+                            zeit.setText("7");
+                        } else {
+                            if (vergangenezeit < 5000) {
+                                zeit.setText("6");
+                            } else {
+                                if (vergangenezeit < 6000) {
+                                    zeit.setText("5");
+                                } else {
+                                    if (vergangenezeit < 7000) {
+                                        zeit.setText("4");
+                                    } else {
+                                        if (vergangenezeit < 8000) {
+                                            zeit.setText("3");
+                                        } else {
+                                            if (vergangenezeit < 9000) {
+                                                zeit.setText("2");
+                                            } else {
+                                                if (vergangenezeit < 10000) {
+                                                    zeit.setText("1");
+                                                } else {
+                                                    damitdasProgrammzufriedenist = 2;
+                                                    new FalseQuizAnswerScreen();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-
-        });
-        //Timer
-
-    }
-
-    private void answercheck ( int n,int randomnumber){
-        this.instance.runOnUiThread(() -> {
-            TextView frage = this.instance.findViewById(R.id.tobi_frage);
-
-            if (randomnumber == n) {
-                new FalseQuizAnswerScreen();
-            } else {
-                //Toast.makeText(this.instance.getApplicationContext(), "Falsche Antwort! Neue Frage", Toast.LENGTH_SHORT).show(); (alte Lösung)
-                new RightQuizAnswerScreen();
-            }
-        });
+        }
+        ;
     }
 }
+
+
 
