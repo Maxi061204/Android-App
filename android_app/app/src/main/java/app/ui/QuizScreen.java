@@ -91,6 +91,12 @@ public class QuizScreen {
 
             });
 
+            if (true){
+                return;
+            }
+
+            // Timer
+
             double startzeit = (System.currentTimeMillis());
             double damitdasProgrammzufriedenist = 0;
             while (true) {
@@ -121,7 +127,6 @@ public class QuizScreen {
             }
 
         });
-        //Timer
 
     }
 
