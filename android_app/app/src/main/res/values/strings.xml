@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login Screen</string>
+    <string name="app_name">KnowLegends</string>
     <string name="falsche_antwort">\"Falsche Antwort 1\"</string>
     <string name="falsche_antwort3">\"Falsche Antwort 3\"</string>
     <string name="falsche_antwort2">\"Falsche Antwort 2\"</string>
