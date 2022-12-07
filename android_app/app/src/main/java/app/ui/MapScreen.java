@@ -60,6 +60,7 @@ public class MapScreen extends AppCompatActivity {
             this.instance.setContentView(R.layout.map_layout);
 
             settings = this.instance.findViewById(R.id.button7);
+            folgen = this.instance.findViewById(R.id.folgen);
 
             map = (MapView) this.instance.findViewById(R.id.map);
             map.setTileSource(TileSourceFactory.MAPNIK);
