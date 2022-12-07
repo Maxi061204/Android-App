@@ -130,7 +130,13 @@ public class MapScreen extends AppCompatActivity {
                     //Bei kurzem drücken
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
 
-                        Punkt punkt = punkte[index];
+                        Punkt punkt = null;
+
+                        for (Punkt p1: punkte){
+                            if (p1.getOverlayItem() == item){
+                                punkt = p1;
+                            }
+                        }
 
                         Location emptyLocation = new Location("");
                         emptyLocation.setLatitude(punkt.getLatitude());

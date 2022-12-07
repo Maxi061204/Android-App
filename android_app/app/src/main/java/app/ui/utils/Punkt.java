@@ -9,11 +9,15 @@ public class Punkt {
 
     private double latitude, longitude;
 
+    private OverlayItem overlayItem;
+
     public Punkt(String title, String description, double latitude, double longitude){
         this.title = title;
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
+
+        this.overlayItem = new OverlayItem(title, description, this.getGeoPoint());
     }
 
     public GeoPoint getGeoPoint(){
@@ -21,7 +25,7 @@ public class Punkt {
     }
 
     public OverlayItem getOverlayItem(){
-        return new OverlayItem(title, description, this.getGeoPoint());
+        return this.overlayItem;
     }
 
     public double getLatitude() {
@@ -30,5 +34,13 @@ public class Punkt {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
