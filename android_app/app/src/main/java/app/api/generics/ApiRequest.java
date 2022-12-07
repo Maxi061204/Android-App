@@ -1,5 +1,7 @@
 package app.api.generics;
 
+import android.os.Looper;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -38,6 +40,8 @@ public class ApiRequest implements Runnable {
     }
 
     public void run(){
+        Looper.prepare();
+
         OkHttpClient client = new OkHttpClient();
 
         Request request;

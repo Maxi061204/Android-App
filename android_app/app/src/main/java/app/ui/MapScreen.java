@@ -36,7 +36,9 @@ public class MapScreen extends AppCompatActivity {
     private MapView map = null;
 
     private MainActivity instance;
-    Button folgen;
+    private Button folgen, settings;
+
+
     public MapScreen(){
         this.instance = MainActivity.getInstance();
 
@@ -56,6 +58,8 @@ public class MapScreen extends AppCompatActivity {
 
             //inflate and create the map
             this.instance.setContentView(R.layout.map_layout);
+
+            settings = this.instance.findViewById(R.id.button7);
 
             map = (MapView) this.instance.findViewById(R.id.map);
             map.setTileSource(TileSourceFactory.MAPNIK);
@@ -77,9 +81,10 @@ public class MapScreen extends AppCompatActivity {
 
 
 
+            settings.setOnClickListener(event -> {
+                new SettingsScreen();
+            });
 
-            //Wenn auf den folgen button gecklickt wird, wird dem aktuellen standort erneut gefolgt
-            folgen= this.instance.findViewById(R.id.folgen);
             folgen.setOnClickListener(event -> {
                 //mehtode um dem aktuellen standort zu folgen
                 mLocationOverlay.enableFollowLocation();

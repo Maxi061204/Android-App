@@ -18,7 +18,7 @@ public class RightQuizAnswerScreen {
     }
 
     private void run(){
-        instance.runOnUiThread(() -> instance.setContentView(R.layout.false_quiz_answer_screen));
+        instance.runOnUiThread(() -> instance.setContentView(R.layout.right_quiz_answer_screen));
 
         instance.runOnUiThread(() -> {
             richtig = instance.findViewById(R.id.richtig);
