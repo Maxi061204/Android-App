@@ -37,7 +37,7 @@ public class MapScreen extends AppCompatActivity {
 
     private MainActivity instance;
     private Button folgen, settings;
-
+    private int Zoom = 18;
 
     public MapScreen(){
         this.instance = MainActivity.getInstance();
@@ -78,7 +78,7 @@ public class MapScreen extends AppCompatActivity {
             map.getOverlays().add(mLocationOverlay);
 
             //setzt Zoom auf bestimmten Wert
-            map.getController().setZoom(18L);
+            map.getController().setZoom(Zoom);
 
 
 
@@ -227,5 +227,8 @@ public class MapScreen extends AppCompatActivity {
 
     }
 
+    public void ZoomÄndern (int neuZoom){
+        Zoom = neuZoom;
+    }
 
 }
