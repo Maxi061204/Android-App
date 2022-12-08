@@ -26,16 +26,24 @@
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="225dp" />
 
-    <Button
-        android:id="@+id/ButtonZoom"
-        android:layout_width="338dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        android:text=" "
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="348dp" />
 
+    <Button
+        android:id="@+id/ButtonZoomPlus"
+        android:layout_width="45dp"
+        android:layout_height="37dp"
+        android:text="+"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="431dp" />
+
+    <Button
+        android:id="@+id/ButtonZoomMinus"
+        android:layout_width="45dp"
+        android:layout_height="37dp"
+        android:text="-"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="251dp"
+        tools:layout_editor_absoluteY="431dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
