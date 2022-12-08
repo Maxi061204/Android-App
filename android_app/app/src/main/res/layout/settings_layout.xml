@@ -6,32 +6,35 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:id="@+id/ButtonPasswort"
+        android:layout_width="339dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:text=" "
         android:visibility="visible"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="100dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="108dp" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:id="@+id/ButtonUsername"
+        android:layout_width="339dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        android:text=" "
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="283dp"
+        tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="225dp" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:id="@+id/ButtonZoom"
+        android:layout_width="338dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:text=" "
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="350dp" />
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="348dp" />
 
 
     <EditText
@@ -43,7 +46,7 @@
         android:minHeight="48dp"
         android:text="Passwort ändern"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="100dp" />
 
     <EditText
@@ -55,7 +58,7 @@
         android:minHeight="48dp"
         android:text="Username ändern"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="225dp" />
 
     <EditText
@@ -67,15 +70,30 @@
         android:minHeight="48dp"
         android:text="Standardzoom ändern"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="350dp" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/ButtonMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zurück zur Karte"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="114dp"
         tools:layout_editor_absoluteY="554dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="673dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
