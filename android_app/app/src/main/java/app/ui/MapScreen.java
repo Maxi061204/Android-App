@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -29,6 +30,7 @@ import java.util.Arrays;
 
 import app.MainActivity;
 import app.ui.utils.Punkt;
+import app.ui.utils.Utils;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 
 public class MapScreen extends AppCompatActivity {
@@ -138,6 +140,11 @@ public class MapScreen extends AppCompatActivity {
                             }
                         }
 
+                        if (punkt == null){
+                            Utils.showErrorMessage(instance, "Punkt nicht gefunden!", "Der Punkt \"" + item.getTitle() + "\" wurde nicht gefunden!");
+                            return true;
+                        }
+
                         Location emptyLocation = new Location("");
                         emptyLocation.setLatitude(punkt.getLatitude());
                         emptyLocation.setLongitude(punkt.getLongitude());
@@ -162,14 +169,14 @@ public class MapScreen extends AppCompatActivity {
         mOverlay.setFocusItemsOnTap(true);
 
 
-        Marker startmarker = new Marker(map);
-        startmarker.setPosition(new GeoPoint(49.030638899241794d, 12.096726984656957d));
-        startmarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-
-        startmarker.setTitle("rofl");
-        // startmarker.setIcon(this.instance.getDrawable(R.drawable.ic_baseline_error_24));
-        startmarker.setImage(this.instance.getDrawable(R.drawable.ic_baseline_error_24));
-        map.getOverlays().add(startmarker);
+//        Marker startmarker = new Marker(map);
+//        startmarker.setPosition(new GeoPoint(49.030638899241794d, 12.096726984656957d));
+//        startmarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+//
+//        startmarker.setTitle("rofl");
+//        // startmarker.setIcon(this.instance.getDrawable(R.drawable.ic_baseline_error_24));
+//        startmarker.setImage(AppCompatResources.getDrawable(instance, R.drawable.ic_baseline_error_24));
+//        map.getOverlays().add(startmarker);
 
         map.getOverlays().add(mOverlay);
     }

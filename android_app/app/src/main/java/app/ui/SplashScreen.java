@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import app.MainActivity;
+import app.api.quiz.SpecificQuiz;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 
 public class SplashScreen {
@@ -28,9 +29,6 @@ public class SplashScreen {
 
 
 
-
-
-
             blau.setOnClickListener(event -> {
                 //Wenn auf den Button gecklickt wird passiert folgendes
                 new MapScreen();
@@ -43,7 +41,7 @@ public class SplashScreen {
 
             rot.setOnClickListener(event -> {
                 //Wenn auf den Button gecklickt wird passiert folgendes
-                new MapScreen();
+                new RaetselScreen("Domplatz");
             });
 
         });

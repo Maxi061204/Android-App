@@ -43,6 +43,22 @@ public class Utils {
         });
     }
 
+    public static void showInfoMessage(MainActivity instance, String title, String body){
+        instance.runOnUiThread(() -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(instance);
+
+            builder.setCancelable(true);
+            builder.setTitle(title);
+            builder.setMessage(body);
+
+            builder.setNeutralButton("Ok", (dialogInterface, i) -> {
+                dialogInterface.cancel();
+            });
+
+            builder.show();
+        });
+    }
+
     public static void writeToFile(Context ctx, String filename, String content){
         File dir = new File(ctx.getFilesDir(), "mydir");
 
@@ -80,8 +96,6 @@ public class Utils {
             return content.toString();
 
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
