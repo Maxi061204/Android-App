@@ -31,7 +31,11 @@ public class SettingsScreen {
         });
 
         ButtonZoomPlus.setOnClickListener(event -> {
+        MapScreen.ZoomErhöhen();
+        });
 
+        ButtonZoomMinus.setOnClickListener(event ->{
+            MapScreen.ZoomVeringern();
         });
 
         ButtonMap.setOnClickListener(event -> {

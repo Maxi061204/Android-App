@@ -37,7 +37,7 @@ public class MapScreen extends AppCompatActivity {
 
     private MainActivity instance;
     private Button folgen, settings;
-    public int Zoom = 18;
+    public static int Zoom = 18;
 
     public MapScreen(){
         this.instance = MainActivity.getInstance();
@@ -174,6 +174,12 @@ public class MapScreen extends AppCompatActivity {
         map.getOverlays().add(mOverlay);
     }
 
+    public static void ZoomErhöhen() {
+        Zoom = Zoom +1 ;
+    }
+    public static void ZoomVeringern() {
+        Zoom = Zoom -1 ;
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -239,4 +245,4 @@ public class MapScreen extends AppCompatActivity {
         }
         }}
 
-}
+
