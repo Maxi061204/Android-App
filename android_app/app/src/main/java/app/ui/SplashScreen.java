@@ -5,8 +5,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.IOException;
+
 import app.MainActivity;
 import app.api.quiz.SpecificQuiz;
+import app.ui.utils.Utils;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 
 public class SplashScreen {

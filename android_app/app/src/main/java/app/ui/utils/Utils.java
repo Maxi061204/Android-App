@@ -59,47 +59,36 @@ public class Utils {
         });
     }
 
-    public static void writeToFile(Context ctx, String filename, String content){
+    public static void writeToFile(Context ctx, String filename, String content) throws IOException {
         File dir = new File(ctx.getFilesDir(), "mydir");
 
         if (!dir.exists()){
             dir.mkdir();
         }
 
-        try {
-            File file = new File(dir, filename);
-            FileWriter writer = new FileWriter(file);
-            writer.append(content);
-            writer.flush();
-            writer.close();
+        File file = new File(dir, filename);
+        FileWriter writer = new FileWriter(file);
+        writer.append(content);
+        writer.flush();
+        writer.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static String readFromFile(Context ctx, String filename){
+    public static String readFromFile(Context ctx, String filename) throws IOException {
         File dir = new File(ctx.getFilesDir(), "mydir");
 
-        try{
-            File file = new File(dir, filename);
-            FileReader reader = new FileReader(file);
+        File file = new File(dir, filename);
+        FileReader reader = new FileReader(file);
 
-            StringBuilder content = new StringBuilder();
+        StringBuilder content = new StringBuilder();
 
-            int c;
+        int c;
 
-            while ((c = reader.read()) != -1){
-                content.append((char) c);
-            }
+        while ((c = reader.read()) != -1){
+            content.append((char) c);
+        }
 
             return content.toString();
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 }

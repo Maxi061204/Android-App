@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.io.IOException;
+
 import app.MainActivity;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 import app.api.generics.ApiResponse;
@@ -20,10 +22,31 @@ public class LoginAccountScreen {
     private TextView username, password, createAccount;
     private Button loginButton;
 
+    private String apiTokenFile;
+
     private MainActivity instance;
 
     public LoginAccountScreen(){
         instance = MainActivity.getInstance();
+
+        apiTokenFile = "api_token";
+
+        boolean loginSkip = false;
+
+        try {
+            String token = Utils.readFromFile(instance.getApplicationContext(), apiTokenFile);
+
+            StateManager.getInstance().setToken(token);
+
+            loginSkip = true;
+
+            this.onSuccessfulLogin();
+        } catch (IOException ignored) {
+        }
+
+        if (loginSkip){
+            return;
+        }
 
         instance.runOnUiThread(() -> {
             instance.setContentView(R.layout.login_screen);
@@ -86,12 +109,15 @@ public class LoginAccountScreen {
                     // die globale Sachen, wie z.B. den Token, speichert.
                     try {
                         StateManager.getInstance().setToken(response.getJson().getString("token"));
+                        Utils.writeToFile(instance.getApplicationContext(), apiTokenFile, response.getJson().getString("token"));
                     } catch (JSONException e) {
                         Utils.showErrorMessage(instance, "Es ist ein Fehler beim Auslesen des Tokens aufgetreten!", e.getMessage());
                         return;
+                    } catch (IOException e) {
+                        Utils.showErrorMessage(instance, "Token", "Token konnte nicht gespeichert werden!");
                     }
 
-                    this.onSuccessfulLogin(response);
+                    this.onSuccessfulLogin();
 
                 } else if (response.getApiCode() == ApiCodes.BAD_USERNAME_OR_PASSWORD) {
                     Utils.showErrorMessage(instance, "Der Benutzername oder das Passwort ist falsch!", "");
@@ -120,7 +146,7 @@ public class LoginAccountScreen {
     }
 
     // das hier habe ich erstellt, damit man sehen kann, was nach dem Erfolgreichem Login getan wird.
-    private void onSuccessfulLogin(ApiResponse response){
+    private void onSuccessfulLogin(){
         new SplashScreen();
     }
 
