@@ -150,7 +150,14 @@ public class MapScreen extends AppCompatActivity {
                         emptyLocation.setLongitude(punkt.getLongitude());
 
                         float radius = 50.0f;
-                        float distance = MainActivity.getLocation().distanceTo(emptyLocation);
+                        float distance;
+
+                        if (MainActivity.getLocation() != null)
+                            distance = MainActivity.getLocation().distanceTo(emptyLocation);
+                        else {
+                            Toast.makeText(instance.getApplicationContext(), "Es konnte der Standort nicht gefunden werden!", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
 
                         if (distance > radius){
                             Toast.makeText(instance.getApplicationContext(), "Du bist zu weit vom punkt weg!", Toast.LENGTH_SHORT).show();
