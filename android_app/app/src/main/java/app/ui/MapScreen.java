@@ -109,9 +109,8 @@ public class MapScreen extends AppCompatActivity {
                 new Punkt("Steinerne Brücke", "", 49.02265146306108d, 12.0972515d),
                 new Punkt("Stadtbibliothek", "Haidplatz 8", 49.02002695633216d, 12.093111864417882d),
                 new Punkt("Neupfahrplatz", "", 49.01840533614868d, 12.096341217848272d),
-                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d), // Haus der Bayerischen Geschichte
+                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d),
                 new Punkt("Historisches Museum", "Dachauplatz", 49.01779086536834d, 12.102089292721177d),
-                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d), // 2. mal Haus der Bayerischen Geschichte ??
                 new Punkt("Thurn und Taxis", "Emeransplatz", 49.014514665635d, 12.097195163342073d),
                 new Punkt("Universität", "Universitätstrasse 1", 48.99674818635844d, 12.095792164417878d),
                 new Punkt("Rennplatz", "Franz von Taxis Ring", 49.013227601436874d, 12.051839413066663d),
