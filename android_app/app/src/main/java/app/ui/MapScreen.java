@@ -39,7 +39,7 @@ public class MapScreen extends AppCompatActivity {
 
     private MainActivity instance;
     private Button folgen, settings;
-    private int Zoom = 18;
+    public static int Zoom = 18;
 
     public MapScreen(){
         this.instance = MainActivity.getInstance();
@@ -107,13 +107,12 @@ public class MapScreen extends AppCompatActivity {
                 new Punkt("Dom Sankt Peter", "Domplatz 1", 49.019437212010224d, 12.098297335534763d),
                 new Punkt("Hauptbahnhof/Arcaden", "Ostengasse 3", 49.01173392596627d, 12.099671342172106d),
                 new Punkt("Stadtpark", "", 49.01919899373d, 12.081176517791059d),
-                new Punkt("Clermont Ferrand", "Clermont-Ferrand Alee", 49.023317480956344d, 12.067827635582113d),
+                new Punkt("Clermont Ferrand", "Clermont-Ferrand Allee", 49.023317480956344d, 12.067827635582113d),
                 new Punkt("Steinerne Brücke", "", 49.02265146306108d, 12.0972515d),
                 new Punkt("Stadtbibliothek", "Haidplatz 8", 49.02002695633216d, 12.093111864417882d),
                 new Punkt("Neupfahrplatz", "", 49.01840533614868d, 12.096341217848272d),
-                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d), // Haus der Bayerischen Geschichte
+                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d),
                 new Punkt("Historisches Museum", "Dachauplatz", 49.01779086536834d, 12.102089292721177d),
-                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d), // 2. mal Haus der Bayerischen Geschichte ??
                 new Punkt("Thurn und Taxis", "Emeransplatz", 49.014514665635d, 12.097195163342073d),
                 new Punkt("Universität", "Universitätstrasse 1", 48.99674818635844d, 12.095792164417878d),
                 new Punkt("Rennplatz", "Franz von Taxis Ring", 49.013227601436874d, 12.051839413066663d),
@@ -188,6 +187,12 @@ public class MapScreen extends AppCompatActivity {
         map.getOverlays().add(mOverlay);
     }
 
+    public static void ZoomErhöhen() {
+        Zoom = Zoom +1 ;
+    }
+    public static void ZoomVeringern() {
+        Zoom = Zoom -1 ;
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -241,8 +246,16 @@ public class MapScreen extends AppCompatActivity {
 
     }
 
-    public void ZoomÄndern (int neuZoom){
-        Zoom = neuZoom;
+    public void ZoomPlus (){
+        if(Zoom<=50){
+
+            Zoom = Zoom++;}
     }
 
-}
+    public void ZoomMinus (){
+        if (Zoom >= 1) {
+            Zoom--;
+        }
+        }}
+
+
