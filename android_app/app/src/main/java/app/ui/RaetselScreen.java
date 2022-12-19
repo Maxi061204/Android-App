@@ -132,7 +132,7 @@ public class RaetselScreen extends AppCompatActivity implements MapEventsReceive
 
         System.out.println("Distance: " + distance);
 
-        if (distance > 5) return;
+        if (distance > 10) return;
 
         try{
             SubSpecificQuiz subQuizz = quiz.getSubQuizzes()[index];

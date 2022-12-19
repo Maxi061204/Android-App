@@ -11,7 +11,7 @@ public class GetSpecificQuizRequest extends ApiRequest {
 
         super.addHeader("token", token);
 
-        super.setEndpoint("/big_quiz/" + platzName);
+        super.setEndpoint("/big_quiz/by_name/" + platzName);
         super.setRequestType(RequestType.GET);
         super.setCallback(callback);
     }

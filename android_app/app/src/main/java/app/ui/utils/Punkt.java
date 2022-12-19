@@ -5,11 +5,11 @@ import org.osmdroid.views.overlay.OverlayItem;
 
 public class Punkt {
 
-    private String title, description;
+    protected String title, description;
 
-    private double latitude, longitude;
+    protected double latitude, longitude;
 
-    private OverlayItem overlayItem;
+    protected OverlayItem overlayItem;
 
     public Punkt(String title, String description, double latitude, double longitude){
         this.title = title;

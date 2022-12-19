@@ -44,6 +44,7 @@ public class LoginAccountScreen {
         } catch (IOException ignored) {
         }
 
+        // async reeeeeeeeeeee
         if (loginSkip){
             return;
         }
