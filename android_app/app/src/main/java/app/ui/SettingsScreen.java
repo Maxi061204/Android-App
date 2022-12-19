@@ -13,7 +13,13 @@ public class SettingsScreen {
 
     public SettingsScreen(){
         instance = MainActivity.getInstance();
-        instance.runOnUiThread(() -> instance.setContentView(R.layout.settings_layout));
+        instance.runOnUiThread(() -> {instance.setContentView(R.layout.settings_layout);
+        ButtonPasswort = this.instance.findViewById(R.id.ButtonPasswort);
+            ButtonZoomPlus = this.instance.findViewById(R.id.ButtonZoomPlus);
+            ButtonZoomMinus = this.instance.findViewById(R.id.ButtonZoomMinus);
+            ButtonUsername= this.instance.findViewById(R.id.ButtonUsername);
+            ButtonMap = this.instance.findViewById(R.id.ButtonMap);
+        });
 
         run();
 
