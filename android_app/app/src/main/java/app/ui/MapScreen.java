@@ -1,6 +1,5 @@
 package app.ui;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -10,25 +9,27 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import org.json.JSONObject;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
-import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
 import app.MainActivity;
+import app.api.quiz.SpecifcQuizName;
+import app.api.quiz.SpecificQuiz;
+import app.ui.utils.GrPunkt;
 import app.ui.utils.Punkt;
 import app.ui.utils.Utils;
 import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
@@ -102,23 +103,37 @@ public class MapScreen extends AppCompatActivity {
 
         Context context = this.instance.getApplicationContext();
 
-        Punkt[] punkte = new Punkt[]{
-                new Punkt("Goethe Gymnasium", "Goethestrasse 1", 49.01809d,12.07463d),
-                new Punkt("Dom Sankt Peter", "Domplatz 1", 49.019437212010224d, 12.098297335534763d),
-                new Punkt("Hauptbahnhof/Arcaden", "Ostengasse 3", 49.01173392596627d, 12.099671342172106d),
-                new Punkt("Stadtpark", "", 49.01919899373d, 12.081176517791059d),
-                new Punkt("Clermont Ferrand", "Clermont-Ferrand Allee", 49.023317480956344d, 12.067827635582113d),
-                new Punkt("Steinerne Brücke", "", 49.02265146306108d, 12.0972515d),
-                new Punkt("Stadtbibliothek", "Haidplatz 8", 49.02002695633216d, 12.093111864417882d),
-                new Punkt("Neupfahrplatz", "", 49.01840533614868d, 12.096341217848272d),
-                new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d),
-                new Punkt("Historisches Museum", "Dachauplatz", 49.01779086536834d, 12.102089292721177d),
-                new Punkt("Thurn und Taxis", "Emeransplatz", 49.014514665635d, 12.097195163342073d),
-                new Punkt("Universität", "Universitätstrasse 1", 48.99674818635844d, 12.095792164417878d),
-                new Punkt("Rennplatz", "Franz von Taxis Ring", 49.013227601436874d, 12.051839413066663d),
-                new Punkt("Weinweg", "", 49.02702246507209d, 12.068116722101989d),
-                new Punkt("Dreifaltigkeitskirche", "", 49.030638899241794d, 12.096726984656957d)
-        };
+        ArrayList<Punkt> punkte = new ArrayList<Punkt>(){{
+                add(new Punkt("Goethe Gymnasium", "Goethestrasse 1", 49.01809d,12.07463d));
+                add(new Punkt("Dom Sankt Peter", "Domplatz 1", 49.019437212010224d, 12.098297335534763d));
+                add(new Punkt("Hauptbahnhof/Arcaden", "Ostengasse 3", 49.01173392596627d, 12.099671342172106d));
+                add(new Punkt("Stadtpark", "", 49.01919899373d, 12.081176517791059d));
+                add(new Punkt("Clermont Ferrand", "Clermont-Ferrand Allee", 49.023317480956344d, 12.067827635582113d));
+                add(new Punkt("Steinerne Brücke", "", 49.02265146306108d, 12.0972515d));
+                add(new Punkt("Stadtbibliothek", "Haidplatz 8", 49.02002695633216d, 12.093111864417882d));
+                add(new Punkt("Neupfahrplatz", "", 49.01840533614868d, 12.096341217848272d));
+                add(new Punkt("HdbG", "", 49.02034752064426d, 12.10229083558212d));
+                add(new Punkt("Historisches Museum", "Dachauplatz", 49.01779086536834d, 12.102089292721177d));
+                add(new Punkt("Thurn und Taxis", "Emeransplatz", 49.014514665635d, 12.097195163342073d));
+                add(new Punkt("Universität", "Universitätstrasse 1", 48.99674818635844d, 12.095792164417878d));
+                add(new Punkt("Rennplatz", "Franz von Taxis Ring", 49.013227601436874d, 12.051839413066663d));
+                add(new Punkt("Weinweg", "", 49.02702246507209d, 12.068116722101989d));
+                add(new Punkt("Dreifaltigkeitskirche", "", 49.030638899241794d, 12.096726984656957d));
+        }};
+
+        SpecificQuiz.alleQuizze(quizze -> {
+            if (quizze == null){
+                System.err.println("SpecificQuizName is null!");
+                return;
+            }
+
+            for (SpecifcQuizName name : quizze) {
+                GrPunkt punkt = new GrPunkt(name.getName(), name.getLatitude(), name.getLongitude());
+
+                punkte.add(punkt);
+            }
+        });
+
 
         for (Punkt punkt: punkte){
             items.add(punkt.getOverlayItem());
@@ -163,7 +178,12 @@ public class MapScreen extends AppCompatActivity {
                             return true;
                         }
 
-                        new QuizScreen();
+                        if (punkt instanceof GrPunkt){
+                            new RaetselScreen(punkt.getTitle());
+                        } else {
+                            new QuizScreen();
+                        }
+
                         return true;
                     }
                     @Override

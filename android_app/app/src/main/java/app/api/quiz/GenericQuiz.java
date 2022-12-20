@@ -25,6 +25,7 @@ public class GenericQuiz {
 
     public static void getRandomQuiz(QuizCallback quizCallback){
         ApiRequest request = new GetRandomGenericQuizRequest(StateManager.getInstance().getToken(), response -> {
+            System.out.println("Response: " + response);
             if (!response.couldConnect() || response.getHttpCode() != HttpCodes.OK){
                 System.err.println("Response is either null or does not have the 200 code!\nResponse: " + (response.getResponse() != null ? response.getResponse().code() : "null"));
                 quizCallback.execute(null);
@@ -65,6 +66,8 @@ public class GenericQuiz {
                 GenericQuiz genericQuiz = new GenericQuiz(id, question, correctAnswer, wrongAnswers);
 
                 quizCallback.execute(genericQuiz);
+            } else {
+                System.err.println("ApiCode is not OK: " + apiCode.name());
             }
         });
 

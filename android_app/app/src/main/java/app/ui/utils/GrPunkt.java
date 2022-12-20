@@ -9,8 +9,8 @@ import de.uwuwhatsthis.quizApp.ui.loginScreen.R;
 
 public class GrPunkt extends Punkt {
 
-    public GrPunkt(String title, String description, double latitude, double longitude) {
-        super(title, description, latitude, longitude);
+    public GrPunkt(String title, double latitude, double longitude) {
+        super(title, "", latitude, longitude);
     }
 
     @Override

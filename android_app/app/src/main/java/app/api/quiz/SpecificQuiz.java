@@ -6,8 +6,10 @@ import org.json.JSONObject;
 
 import app.MainActivity;
 import app.api.callbacks.SpecificQuizCallback;
+import app.api.callbacks.SpecificQuizNameCallback;
 import app.api.codes.ApiCodes;
 import app.api.codes.HttpCodes;
+import app.api.requests.quiz.GetAllSpecificQuizRequests;
 import app.api.requests.quiz.GetSpecificQuizRequest;
 import app.api.state.StateManager;
 import app.ui.utils.Utils;
@@ -42,7 +44,7 @@ public class SpecificQuiz {
             ApiCodes apiCode = ApiCodes.getFromCode(code);
 
             if (apiCode == null){
-                System.err.println("Invalid api code after requesting generic Quiz: " + code);
+                System.err.println("Invalid api code after requesting specific Quiz: " + code);
                 callback.execute(null);
                 return;
             }
@@ -51,12 +53,6 @@ public class SpecificQuiz {
                 JSONObject quizObject;
 
                 quizObject = response.getJson().optJSONObject("quiz");
-
-                try {
-                    System.out.println(quizObject.toString(2));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
                 String ortName = quizObject.optString("name");
 
@@ -87,6 +83,62 @@ public class SpecificQuiz {
                 }
 
                 callback.execute(new SpecificQuiz(ortName, quizze));
+            }
+        });
+
+        request.doRequest();
+    }
+
+    public static void alleQuizze(SpecificQuizNameCallback callback){
+        GetAllSpecificQuizRequests request = new GetAllSpecificQuizRequests(StateManager.getInstance().getToken(), response -> {
+            if (!response.couldConnect() || response.getHttpCode() != HttpCodes.OK){
+                System.err.println("Response is either null or does not have the 200 code!\nResponse: " + (response.getResponse() != null ? response.getResponse().code() : "null"));
+                callback.execute(null);
+                return;
+            }
+
+            int code = response.getJson().optInt("code", -1);
+
+            ApiCodes apiCode = ApiCodes.getFromCode(code);
+
+            if (apiCode == null){
+                System.err.println("Invalid api code after requesting specific Quiz: " + code);
+                callback.execute(null);
+                return;
+            }
+
+            if (apiCode == ApiCodes.SUCCESS){
+                JSONArray array;
+
+                array = response.getJson().optJSONArray("data");
+
+                if (array == null){
+                    Utils.showErrorMessage(MainActivity.getInstance(), "Netzwerkfehler", "Konnte das Array nicht auslesen!");
+                    callback.execute(null);
+                    return;
+                }
+
+                SpecifcQuizName[] names = new SpecifcQuizName[array.length()];
+
+                for (int i=0; i < array.length(); i++){
+                    JSONObject obj;
+
+                    try {
+                        obj = array.getJSONObject(i);
+                    } catch (JSONException e) {
+                        Utils.showErrorMessage(MainActivity.getInstance(), "Netzwerkfehler", "Konnte den JSON-Body nicht auslesen!");
+                        callback.execute(null);
+                        return;
+                    }
+
+                    names[i] = new SpecifcQuizName(obj.optString("name"), obj.optString("koords"));
+                }
+
+                callback.execute(names);
+            } else {
+                Utils.showErrorMessage(MainActivity.getInstance(), "Netzwerkfehler", "Api code ist nicht ok: " + apiCode);
+                callback.execute(null);
+                return;
             }
         });
 

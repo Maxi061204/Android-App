@@ -22,7 +22,18 @@ public class QuizScreen {
     public QuizScreen() {
         instance = MainActivity.getInstance();
 
-        instance.runOnUiThread(() -> instance.setContentView(R.layout.quiz_screen));
+        instance.runOnUiThread(() -> {
+            instance.setContentView(R.layout.quiz_screen);
+            
+            frage = instance.findViewById(R.id.tobi_frage);
+            zeit = instance.findViewById(R.id.tobi_zeit);
+
+            eins = instance.findViewById(R.id.tobi_button_eins);
+            zwei = instance.findViewById(R.id.tobi_button_zwei);
+            drei = instance.findViewById(R.id.tobi_button_drei);
+            vier = instance.findViewById(R.id.tobi_button_vier);
+            back = instance.findViewById(R.id.back);
+        });
 
         run();
     }
@@ -30,21 +41,14 @@ public class QuizScreen {
     private void run() {
         // Hier ist die Api-Anfrage in der GenericQuiz Klasse verpackt. Hier muss nur noch geprüft werden ob die Anfrage erfolgreich war.
         GenericQuiz.getRandomQuiz(quiz -> {
+            System.out.println("Quiz: " + quiz);
             if (quiz == null) {
+                System.err.println("GenericQuiz.getRandomQuiz: quiz ist null");
                 Utils.showErrorMessage(instance, "Ein Fehler ist aufgetreten, als ein Quiz vom Server abgefraget werden sollte!", "");
                 return;
             }
 
             instance.runOnUiThread(() -> {
-                frage = instance.findViewById(R.id.tobi_frage);
-                zeit = instance.findViewById(R.id.tobi_zeit);
-
-                eins = instance.findViewById(R.id.tobi_button_eins);
-                zwei = instance.findViewById(R.id.tobi_button_zwei);
-                drei = instance.findViewById(R.id.tobi_button_drei);
-                vier = instance.findViewById(R.id.tobi_button_vier);
-                back = instance.findViewById(R.id.back);
-
                 frage.setText(quiz.getQuestion());
 
                 new CountDownTimer(30000, 1000) {
